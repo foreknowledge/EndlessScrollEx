@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="@dimen/poster_size"
+            android:layout_height="@dimen/poster_size"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/poster_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toEndOf="@+id/poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:singleLine="true"
+                tools:text="TV show 제목" />
+
+            <TextView
+                android:id="@+id/first_air_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="bottom"
+                android:textColor="@color/colorPrimary"
+                tools:text="(2010-06-08)"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/overview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Based on the Pretty Little Liars series of young adult novels by Sara Shepard, the series follows the lives of four girls — Spencer, Hanna, Aria, and Emily" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
