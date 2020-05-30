@@ -1,2 +1,2 @@
 # EndlessScrollEx
-Paging 연습용 프로젝트
+Paging 라이브러리 연습 프로젝트
