@@ -1,2 +1,2 @@
 # EndlessScrollEx
-Paging &amp; Moshi 연습용 프로젝트
+Paging 연습용 프로젝트
