@@ -19,7 +19,7 @@
             android:layout_height="@dimen/poster_size"
             android:scaleType="centerCrop"
             android:contentDescription="@string/poster_img"
-            app:bind_image="@{tvShow.posterPath}"
+            app:bind_image="@{tvShow.posterUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
