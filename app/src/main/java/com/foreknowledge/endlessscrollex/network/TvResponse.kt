@@ -1,5 +1,6 @@
 package com.foreknowledge.endlessscrollex.network
 
+import com.foreknowledge.endlessscrollex.BASE_POSTER_URL
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -33,5 +34,7 @@ data class TvShow(
     val firstAirDate: String,
 
     @SerializedName("poster_path")
-    val posterPath: String
-)
+    private val posterPath: String
+) {
+    val posterUrl: String = BASE_POSTER_URL + posterPath
+}
