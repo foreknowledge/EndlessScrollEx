@@ -1,4 +1,4 @@
-package com.foreknowledge.endlessscrollex.repository
+package com.foreknowledge.endlessscrollex.model
 
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource

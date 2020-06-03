@@ -8,7 +8,7 @@ import androidx.paging.PagedList
 import com.foreknowledge.endlessscrollex.R
 import com.foreknowledge.endlessscrollex.listener.PagingListener
 import com.foreknowledge.endlessscrollex.network.TvShow
-import com.foreknowledge.endlessscrollex.repository.TvRepository
+import com.foreknowledge.endlessscrollex.model.TvRepository
 import com.foreknowledge.endlessscrollex.util.StringUtil
 import com.foreknowledge.endlessscrollex.util.ToastUtil
 
