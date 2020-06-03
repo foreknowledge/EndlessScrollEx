@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Endless Scroll Ex</string>
     <string name="poster_img">포스터 이미지</string>
+    <string name="load_fail">데이터를 로드하는 데 실패했습니다.</string>
 </resources>
