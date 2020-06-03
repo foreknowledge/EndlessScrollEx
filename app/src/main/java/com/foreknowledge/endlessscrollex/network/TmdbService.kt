@@ -1,6 +1,6 @@
 package com.foreknowledge.endlessscrollex.network
 
-import com.foreknowledge.endlessscrollex.BASE_URL
+import com.foreknowledge.endlessscrollex.network.TmdbApi.Companion.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
