@@ -1,5 +1,6 @@
 package com.foreknowledge.endlessscrollex.util
 
+import android.content.Context
 import android.widget.Toast
 import com.foreknowledge.endlessscrollex.GlobalApp
 
@@ -9,6 +10,7 @@ import com.foreknowledge.endlessscrollex.GlobalApp
 object ToastUtil {
     fun showToast(
         msg: String,
+        context: Context = GlobalApp.getContext(),
         length: Int = Toast.LENGTH_LONG
-    ) = Toast.makeText(GlobalApp.getContext(), msg, length).show()
+    ) = Toast.makeText(context, msg, length).show()
 }

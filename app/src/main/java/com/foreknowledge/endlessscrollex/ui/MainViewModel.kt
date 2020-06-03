@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import com.foreknowledge.endlessscrollex.R
+import com.foreknowledge.endlessscrollex.listener.PagingListener
 import com.foreknowledge.endlessscrollex.network.TvShow
 import com.foreknowledge.endlessscrollex.repository.TvRepository
 import com.foreknowledge.endlessscrollex.util.StringUtil
@@ -28,15 +29,16 @@ class MainViewModel : ViewModel() {
     private fun loadTvShow() {
         _isLoading.value = true
 
-        tvShowList = TvRepository.getPopularTvShows(
-            onSuccess = {
-                _isLoading.value = false
-            },
-            onError = { tag, msg ->
+        tvShowList = TvRepository.getPopularTvShows(object : PagingListener {
+            override fun onSuccess() {
+                _isLoading.postValue(false)
+            }
+
+            override fun onError(tag: String, msg: String) {
                 _isLoading.value = false
                 ToastUtil.showToast(StringUtil.getString(R.string.load_fail))
                 Log.e(tag, msg)
             }
-        )
+        })
     }
 }

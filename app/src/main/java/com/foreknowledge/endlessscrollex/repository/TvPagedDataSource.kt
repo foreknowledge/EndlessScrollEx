@@ -2,6 +2,7 @@ package com.foreknowledge.endlessscrollex.repository
 
 import androidx.paging.DataSource
 import androidx.paging.PageKeyedDataSource
+import com.foreknowledge.endlessscrollex.listener.PagingListener
 import com.foreknowledge.endlessscrollex.network.TmdbService
 import com.foreknowledge.endlessscrollex.network.TvResponse
 import com.foreknowledge.endlessscrollex.network.TvShow
@@ -13,33 +14,37 @@ import retrofit2.Response
  * Create by Yeji on 03,June,2020.
  */
 class TvPagedDataSource private constructor(
-    private val onSuccess: (data: List<TvShow>) -> Unit,
-    private val onError: (tag: String, msg: String) -> Unit
+    private val listener: PagingListener
 ) : PageKeyedDataSource<Int, TvShow>() {
+    private var totalPages: Int = 0
 
-    class Factory(
-        private val onSuccess: (data: List<TvShow>) -> Unit,
-        private val onError: (tag: String, msg: String) -> Unit
-    ) : DataSource.Factory<Int, TvShow>() {
+    class Factory(private val listener: PagingListener) : DataSource.Factory<Int, TvShow>() {
         override fun create(): DataSource<Int, TvShow> =
-            TvPagedDataSource(onSuccess, onError)
+            TvPagedDataSource(listener)
     }
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, TvShow>
     ) {
-        fetchPopulars(FIRST_PAGE) { callback.onResult(it, null, FIRST_PAGE + 1) }
+        fetchPopulars(FIRST_PAGE) { data ->
+            callback.onResult(data, null, FIRST_PAGE + 1)
+        }
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, TvShow>) {
         val page = params.key
-        fetchPopulars(page) { callback.onResult(it, page + 1) }
+        if (page > totalPages) {
+            return
+        }
+
+        fetchPopulars(page) { data ->
+            callback.onResult(data, page + 1)
+        }
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, TvShow>) {
-        val page = params.key
-        fetchPopulars(page) { callback.onResult(it, page - 1) }
+        // do nothing
     }
 
     private fun fetchPopulars(
@@ -49,17 +54,19 @@ class TvPagedDataSource private constructor(
         TmdbService.service.getPopularTvShows(page)
             .enqueue(object: Callback<TvResponse> {
                 override fun onFailure(call: Call<TvResponse>, t: Throwable) {
-                    onError(TAG, "throwable: ${t.message}")
+                    listener.onError(TAG, "throwable: ${t.message}")
                 }
 
                 override fun onResponse(call: Call<TvResponse>, response: Response<TvResponse>) {
                     if (response.isSuccessful) {
-                        val data = response.body()?.results ?: emptyList()
-                        onResult(data)
-                        onSuccess(data)
+                        response.body()?.let {
+                            totalPages = it.totalPages
+                            onResult(it.results)
+                        }
+                        listener.onSuccess()
                     }
                     else {
-                        onError(TAG, "request error: ${response.message()}")
+                        listener.onError(TAG, "request error: ${response.message()}")
                     }
                 }
             })

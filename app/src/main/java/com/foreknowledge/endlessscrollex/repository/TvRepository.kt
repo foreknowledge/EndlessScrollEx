@@ -3,6 +3,7 @@ package com.foreknowledge.endlessscrollex.repository
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.foreknowledge.endlessscrollex.listener.PagingListener
 import com.foreknowledge.endlessscrollex.network.TvShow
 
 /**
@@ -12,11 +13,17 @@ object TvRepository {
     private const val DEFAULT_PAGE_SIZE = 20
 
     fun getPopularTvShows(
-        onSuccess: (data: List<TvShow>) -> Unit,
-        onError: (tag: String, msg: String) -> Unit,
+        listener: PagingListener,
         pageSize: Int = DEFAULT_PAGE_SIZE
     ): LiveData<PagedList<TvShow>> {
-        val dataSource = TvPagedDataSource.Factory(onSuccess, onError)
-        return LivePagedListBuilder(dataSource, pageSize).build()
+        val dataSourceFactory = TvPagedDataSource.Factory(listener)
+
+        val pageListConfig = PagedList.Config.Builder()
+            .setPageSize(pageSize)
+            .setPrefetchDistance(pageSize * 3)
+            .setEnablePlaceholders(true)
+            .build()
+
+        return LivePagedListBuilder(dataSourceFactory, pageListConfig).build()
     }
 }
