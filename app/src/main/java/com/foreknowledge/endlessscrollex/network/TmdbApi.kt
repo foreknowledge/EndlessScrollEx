@@ -8,7 +8,7 @@ import retrofit2.http.Query
 /**
  * Create by Yeji on 30,May,2020.
  */
-interface TvShowService {
+interface TmdbApi {
     @GET("tv/popular")
     fun getPopularTvShows(
         @Query("page") page: Int? = 1,

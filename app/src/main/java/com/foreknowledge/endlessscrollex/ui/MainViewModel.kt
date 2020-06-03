@@ -27,7 +27,6 @@ class MainViewModel : ViewModel() {
     private fun loadTvShow() {
         TvRepository.getPopularTvShow(
             success = {
-                Log.d("test", "response = $it")
                 _isLoading.value = false
             },
             failure = { tag, message -> Log.e(tag, message) }

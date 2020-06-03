@@ -9,10 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * Create by Yeji on 30,May,2020.
  */
-object RetrofitClient {
+object TmdbService {
     val service: TmdbApi by lazy {
         val logger = HttpLoggingInterceptor().apply {
-            level =  HttpLoggingInterceptor.Level.BASIC
+            level =  HttpLoggingInterceptor.Level.BODY
         }
 
         val client = OkHttpClient.Builder()
