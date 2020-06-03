@@ -10,7 +10,7 @@ import com.foreknowledge.endlessscrollex.R
  */
 
 @BindingAdapter("bind_image")
-fun ImageView.bindImage(url: String) {
+fun ImageView.bindImage(url: String?) {
     Glide.with(context)
         .load(url)
         .error(R.drawable.no_image)

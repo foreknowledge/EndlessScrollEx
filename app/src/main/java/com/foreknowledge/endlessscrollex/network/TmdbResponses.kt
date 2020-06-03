@@ -1,6 +1,6 @@
 package com.foreknowledge.endlessscrollex.network
 
-import com.foreknowledge.endlessscrollex.BASE_POSTER_URL
+import com.foreknowledge.endlessscrollex.network.TmdbApi.Companion.BASE_POSTER_URL
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -36,5 +36,5 @@ data class TvShow(
     @SerializedName("poster_path")
     private val posterPath: String
 ) {
-    val posterUrl: String = BASE_POSTER_URL + posterPath
+    fun getPosterUrl(): String = BASE_POSTER_URL + posterPath
 }

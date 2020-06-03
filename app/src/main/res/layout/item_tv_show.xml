@@ -5,7 +5,7 @@
     
     <data>
         <variable
-            name="tvShow"
+            name="item"
             type="com.foreknowledge.endlessscrollex.network.TvShow" />
     </data>
 
@@ -19,7 +19,7 @@
             android:layout_height="@dimen/poster_size"
             android:scaleType="centerCrop"
             android:contentDescription="@string/poster_img"
-            app:bind_image="@{tvShow.posterUrl}"
+            app:bind_image="@{item.getPosterUrl()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
@@ -38,7 +38,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@{tvShow.name}"
+                android:text="@{item.name}"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:singleLine="true"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_gravity="center"
-                android:text="@{tvShow.firstAirDate}"
+                android:text="@{item.firstAirDate}"
                 android:textColor="@color/colorPrimary"
                 tools:text="2010-06-08"/>
 
@@ -63,7 +63,7 @@
             android:layout_margin="5dp"
             android:maxLines="3"
             android:ellipsize="end"
-            android:text="@{tvShow.overview}"
+            android:text="@{item.overview}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/poster"
             app:layout_constraintEnd_toEndOf="parent"

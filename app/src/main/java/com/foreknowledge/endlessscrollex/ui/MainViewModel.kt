@@ -5,32 +5,40 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
+import com.foreknowledge.endlessscrollex.R
+import com.foreknowledge.endlessscrollex.listener.PagingListener
 import com.foreknowledge.endlessscrollex.network.TvShow
-import com.foreknowledge.endlessscrollex.repository.TvRepository
+import com.foreknowledge.endlessscrollex.model.TvRepository
+import com.foreknowledge.endlessscrollex.util.StringUtil
+import com.foreknowledge.endlessscrollex.util.ToastUtil
 
 /**
  * Create by Yeji on 29,May,2020.
  */
 class MainViewModel : ViewModel() {
-    private val _isLoading = MutableLiveData(true)
+    lateinit var tvShowList: LiveData<PagedList<TvShow>>
+
+    private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean>
         get() = _isLoading
-
-    private val _tvShowList = MutableLiveData<PagedList<TvShow>>()
-    val tvShowList: LiveData<PagedList<TvShow>>
-        get() = _tvShowList
 
     init {
         loadTvShow()
     }
 
     private fun loadTvShow() {
-        TvRepository.getPopularTvShow(
-            success = {
-                Log.d("test", "response = $it")
+        _isLoading.value = true
+
+        tvShowList = TvRepository.getPopularTvShows(object : PagingListener {
+            override fun onSuccess() {
+                _isLoading.postValue(false)
+            }
+
+            override fun onError(tag: String, msg: String) {
                 _isLoading.value = false
-            },
-            failure = { tag, message -> Log.e(tag, message) }
-        )
+                ToastUtil.showToast(StringUtil.getString(R.string.load_fail))
+                Log.e(tag, msg)
+            }
+        })
     }
 }
