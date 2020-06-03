@@ -34,7 +34,16 @@ data class TvShow(
     val firstAirDate: String,
 
     @SerializedName("poster_path")
-    private val posterPath: String
+    private val posterPath: String,
+
+    @SerializedName("popularity")
+    val popularity: Double,
+
+    @SerializedName("vote_average")
+    val voteAverage: Double,
+
+    @SerializedName("origin_country")
+    val originCountries: List<String>
 ) {
     fun getPosterUrl(): String = BASE_POSTER_URL + posterPath
 }
