@@ -7,7 +7,7 @@ import com.foreknowledge.endlessscrollex.listener.PagingListener
 import com.foreknowledge.endlessscrollex.network.TvShow
 
 /**
- * Create by Yeji on 30,May,2020.
+ * Created by Yeji on 30,May,2020.
  */
 object TvRepository {
     private const val DEFAULT_PAGE_SIZE = 20

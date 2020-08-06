@@ -5,7 +5,7 @@ import android.widget.Toast
 import com.foreknowledge.endlessscrollex.GlobalApp
 
 /**
- * Create by Yeji on 03,June,2020.
+ * Created by Yeji on 03,June,2020.
  */
 object ToastUtil {
     fun showToast(

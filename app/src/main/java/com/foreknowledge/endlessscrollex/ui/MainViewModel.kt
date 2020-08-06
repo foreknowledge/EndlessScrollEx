@@ -13,7 +13,7 @@ import com.foreknowledge.endlessscrollex.util.StringUtil
 import com.foreknowledge.endlessscrollex.util.ToastUtil
 
 /**
- * Create by Yeji on 29,May,2020.
+ * Created by Yeji on 29,May,2020.
  */
 class MainViewModel : ViewModel() {
     lateinit var tvShowList: LiveData<PagedList<TvShow>>

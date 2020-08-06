@@ -10,7 +10,7 @@ import com.foreknowledge.endlessscrollex.listener.ItemClickListener
 import com.foreknowledge.endlessscrollex.network.TvShow
 
 /**
- * Create by Yeji on 03,June,2020.
+ * Created by Yeji on 03,June,2020.
  */
 class TvShowsAdapter : PagedListAdapter<TvShow, TvShowsAdapter.TvShowsViewHolder>(diffCallback) {
 

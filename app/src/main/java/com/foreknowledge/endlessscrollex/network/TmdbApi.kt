@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * Create by Yeji on 30,May,2020.
+ * Created by Yeji on 30,May,2020.
  */
 interface TmdbApi {
     @GET("tv/popular")

@@ -4,7 +4,7 @@ import com.foreknowledge.endlessscrollex.network.TmdbApi.Companion.BASE_POSTER_U
 import com.google.gson.annotations.SerializedName
 
 /**
- * Create by Yeji on 30,May,2020.
+ * Created by Yeji on 30,May,2020.
  */
 data class TvResponse(
     @SerializedName("page")
