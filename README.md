@@ -1,6 +1,6 @@
 # EndlessScrollEx
 
-Paging 라이브러리 연습 프로젝트
+Paging 라이브러리를 이용해 무한 스크롤을 구현한 미니 프로젝트입니다.
 
 ### 시작하기
 
@@ -11,3 +11,13 @@ Paging 라이브러리 연습 프로젝트
 ```bash
 API_KEY="발급 받은 API key"
 ```
+
+### 라이브러리
+
+- AAC
+  - [Paging](https://developer.android.com/topic/libraries/architecture/paging)
+  - [LifeCycle](https://developer.android.com/jetpack/androidx/releases/lifecycle)
+  - [DataBinding](https://developer.android.com/topic/libraries/data-binding)
+- [Glide](https://github.com/bumptech/glide)
+- [OkHttp](https://square.github.io/okhttp)
+- [Retrofit](https://square.github.io/retrofit) 
