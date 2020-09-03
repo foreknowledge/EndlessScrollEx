@@ -1,4 +1,4 @@
-# EndlessScrollEx
+# Endless Scroll Exercise
 
 Paging 라이브러리를 이용해 무한 스크롤을 구현한 미니 프로젝트입니다.
 
